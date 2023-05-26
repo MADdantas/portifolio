@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@main
 
       - name: Merge staging or release/* -> main
-        uses: MADdantas/merge-branch@main
+        uses: MADdantas/portifolio@main
         with:
           type: now
           target_branch: main
