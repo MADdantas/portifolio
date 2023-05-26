@@ -6,7 +6,6 @@ permissions:
   # Need `contents: read` to checkout the repository
   # Need `contents: write` to merge branches
   contents: write
-  pull-requests: write
 on:
   push:
     branches:
