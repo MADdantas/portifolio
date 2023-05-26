@@ -5,7 +5,7 @@ permissions:
   # Permissions required for merging branches
   # Need `contents: read` to checkout the repository
   # Need `contents: write` to merge branches
-  contents: write-all
+  contents: write
 on:
   push:
     branches:
