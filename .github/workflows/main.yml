@@ -5,7 +5,7 @@ permissions:
   # Permissions required for merging branches
   # Need `contents: read` to checkout the repository
   # Need `contents: write` to merge branches
-  contents: write-all
+  contents: write
 on:
   push:
     branches:
@@ -15,10 +15,10 @@ jobs:
   merge-branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
 
       - name: Merge staging or release/* -> main
-        uses: MADdantas/merge-branch@main
+        uses: devmasx/merge-branch@master
         with:
           type: now
           target_branch: main
