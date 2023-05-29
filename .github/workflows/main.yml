@@ -23,14 +23,11 @@ jobs:
           type: now
           target_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          
-  createPullRequest:
-    if: ${{ failure() }}
-    runs-on: ubuntu-latest
-    steps:
+        
       - uses: actions/checkout@v3
 
       - name: Create Pull Request
+        if: ${{ failure() }} 
         uses: peter-evans/create-pull-request@v5
         with:
           # Make changes to pull request here
