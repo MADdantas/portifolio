@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 
 test('Renders without crashing', ()=>{
     
-    let x = 200;
+    const y = 200;
     render(<App />);
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
