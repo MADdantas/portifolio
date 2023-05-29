@@ -23,9 +23,7 @@ jobs:
           type: now
           target_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
-        
-      - uses: actions/checkout@v3
-
+      
       - name: Create Pull Request
         if: ${{ failure() }} 
         uses: peter-evans/create-pull-request@v5
@@ -33,4 +31,5 @@ jobs:
           # Make changes to pull request here
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: Action Changes by create-pull-request action
-          branch: main
+          branch: stagin
+          base: main
