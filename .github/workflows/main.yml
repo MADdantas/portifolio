@@ -41,3 +41,4 @@ jobs:
           labels: |
             report
             automated pr
+          draft: true
