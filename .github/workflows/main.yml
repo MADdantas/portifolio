@@ -27,12 +27,12 @@ jobs:
   createPullRequest:
     if: ${{ failure() }}
     runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-        - name: Create Pull Request
-          uses: peter-evans/create-pull-request@v5
-          with:
-            # Make changes to pull request here
-            author: ${{ github.actor }}
-            title: [Action] Changes by create-pull-request action
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          # Make changes to pull request here
+          author: ${{ github.actor }}
+          title: Action Changes by create-pull-request action
