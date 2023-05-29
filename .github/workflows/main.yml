@@ -31,7 +31,7 @@ jobs:
           # Make changes to pull request here
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: '[Action] Changes by create-pull-request action'
-          branch: main
+          branch: staging
           body: |
             Update report
             - Updated with *today's* date
