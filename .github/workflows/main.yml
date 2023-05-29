@@ -6,6 +6,7 @@ permissions:
   # Need `contents: read` to checkout the repository
   # Need `contents: write` to merge branches
   contents: write
+  pull-requests: write
 on:
   push:
     branches:
@@ -23,3 +24,14 @@ jobs:
           type: now
           target_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Create Pull Request
+        if: ${{ failure() }} 
+        uses: repo-sync/pull-request@master
+        with:
+          destination_branch: "main"
+          pr_title: "[Conflict] Try to merge ${{ github.ref_name }} into develop" # Title of pull request
+          pr_body: 'Pr created by automation because of a conflict'
+          pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
+          pr_label: "auto-pr"                               # Comma-separated list (no spaces)
+         
