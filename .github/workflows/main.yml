@@ -16,7 +16,7 @@ jobs:
   merge-branch:
     runs-on: ubuntu-latest
     env:
-      NEW_BRANCH: 'merge/${{ github.ref_name }}'
+      NEW_BRANCH: ${{ 'merge/${{ github.ref_name }}' }}
     steps:
       - name: Creating new branch
         uses: peterjgrainger/action-create-branch@v2.2.0
