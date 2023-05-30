@@ -12,19 +12,21 @@ on:
     branches:
       - staging
       - 'release/*'
-env:
-  NEW_BRANCH: ${{ 'merge/${{ github.ref_name }}' }}
-  GITHUB_TOKEN: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
     steps:
       - name: Creating new branch
         uses: peterjgrainger/action-create-branch@v2.2.0
+        env:
+          NEW_BRANCH: ${{ 'merge/${{ github.ref_name }}' }}
+          GITHUB_TOKEN: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
         with:
           branch: 'refs/heads/${{ env.NEW_BRANCH }}'
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
+        env:
+          NEW_BRANCH: ${{ 'merge/${{ github.ref_name }}' }}
         with:
           destination_branch: '${{ env.NEW_BRANCH }}'
           pr_title: "Merge ${{ env.NEW_BRANCH }} into develop" # Title of pull request
