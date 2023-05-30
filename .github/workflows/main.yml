@@ -16,22 +16,17 @@ jobs:
   merge-branch:
     runs-on: ubuntu-latest
     steps:
+      name: Creating new branch
+        - uses: peterjgrainger/action-create-branch@v2.2.0
+          env:
+            GITHUB_TOKEN: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
+          with:
+            branch: 'refs/heads/merge/${{ github.ref_name }}'
+
       - uses: actions/checkout@master
 
-      - name: Merge staging or release/* -> main
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          target_branch: main
-          github_token: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
-      
-      - name: Create Pull Request
-        if: ${{ failure() }} 
-        uses: repo-sync/pull-request@master
-        with:
-          destination_branch: "main"
-          pr_title: "[Conflict] Try to merge ${{ github.ref_name }} into develop" # Title of pull request
-          pr_body: 'Pr created by automation because of a conflict'
-          pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
-          pr_label: "auto-pr"                               # Comma-separated list (no spaces)
-          pr_draft: true                                    # Creates pull request as draft
+      - uses: fopina/upstream-to-pr@v1
+        with:    
+          token: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
+          upstream-repository: https://github.com/MADdantas/portifolio
+          upstream-branch: main
