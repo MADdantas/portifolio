@@ -13,7 +13,7 @@ on:
       - staging
       - 'release/*'
 env:
-  NEW_BRANCH: ${{ 'merge/'${{ github.ref_name }} }}
+  NEW_BRANCH: ${{ 'merge/' }}${{ github.ref_name }}
   GITHUB_TOKEN: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
 jobs:
   merge-branch:
