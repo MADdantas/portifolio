@@ -27,4 +27,4 @@ jobs:
         with:    
           token: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
           upstream-repository: https://github.com/MADdantas/portifolio
-          upstream-branch: main
+          upstream-branch: 'main'
