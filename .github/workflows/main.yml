@@ -23,7 +23,7 @@ jobs:
         with:
           type: now
           target_branch: main
-          github_token: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Create Pull Request
         if: ${{ failure() }} 
