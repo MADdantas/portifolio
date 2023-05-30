@@ -4,7 +4,8 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 test('Renders without crashing', ()=>{
-    const test = 69;
+
+    let test;
     render(<App />);
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
