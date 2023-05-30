@@ -26,7 +26,7 @@ jobs:
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
         with:
-          destination_branch: '${{ env.NEW_BRANCH }}'
+          destination_branch: 'refs/heads/${{ env.NEW_BRANCH }}'
           pr_title: "Merge ${{ env.NEW_BRANCH }} into develop" # Title of pull request
           pr_body: 'Pr created by automation because of a conflict'
           pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
