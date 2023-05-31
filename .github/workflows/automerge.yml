@@ -1,5 +1,13 @@
 name: automerge
 on:
+  pull_request:
+    types:
+      - labeled
+      - opened
+      - ready_for_review
+  check_suite:
+    types:
+      - completed
   status: {success}
 env:
   GITHUB_TOKEN: "${{ secrets.AUTOMATION_ACCESS_TOKEN }}"
