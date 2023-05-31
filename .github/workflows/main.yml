@@ -29,5 +29,5 @@ jobs:
           pr_title: "[Automation] ${{ env.NEW_BRANCH }} into develop" # Title of pull request
           pr_body: 'Pr created by automation because of a conflict'
           pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
-          pr_label: "auto-pr,merge-failed,automerge"             # Comma-separated list (no spaces)
+          pr_label: "auto-pr,automerge"             # Comma-separated list (no spaces)
           pr_draft: false                                    # Creates pull request as draft
