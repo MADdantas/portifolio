@@ -1,10 +1,5 @@
 name: Merge any release branch to uat
 permissions:
-  # [Learn more about automatic token authentication permissions]
-  # (https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token)
-  # Permissions required for merging branches
-  # Need `contents: read` to checkout the repository
-  # Need `contents: write` to merge branches
   contents: write
   pull-requests: write
 on:
