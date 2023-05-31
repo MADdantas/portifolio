@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/checkout@master
 
-      - name: Create Pull Request
+      - name: Create Pull Request to '${{ env.NEW_BRANCH }}'
         uses: repo-sync/pull-request@master
         with:
           destination_branch: '${{ env.NEW_BRANCH }}'
@@ -31,3 +31,15 @@ jobs:
           pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
           pr_label: "merge-failed,automerge"             # Comma-separated list (no spaces)
           pr_draft: false                                    # Creates pull request as draft
+      
+      - name: Create Pull Request to main
+      if: ${{ failure() }} 
+      uses: repo-sync/pull-request@master
+        with:
+          destination_branch: 'main'
+          source_branch: '${{ github.ref_name }}'
+          pr_title: "[Automation] ${{ github.ref_name }} into develop" # Title of pull request
+          pr_body: 'Pr created by automation to run tests'
+          pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
+          pr_label: "merge-failed,automerge"             # Comma-separated list (no spaces)
+          pr_draft: false                                # Creates pull request as draft
