@@ -5,7 +5,7 @@ on:
   # check_suite:
   #   types:
   #     - completed
-  status: {success}
+  status: {}
 env:
   GITHUB_TOKEN: "${{ secrets.AUTOMATION_ACCESS_TOKEN }}"
   MERGE_LABELS: "automerge"
