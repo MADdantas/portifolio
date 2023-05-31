@@ -1,4 +1,4 @@
-name: Merge any release branch to uat
+name: Merge any release or staging branch to develop
 permissions:
   contents: write
   pull-requests: write
@@ -26,8 +26,8 @@ jobs:
         with:
           destination_branch: 'main'
           source_branch: '${{ env.NEW_BRANCH }}'
-          pr_title: "Merge ${{ env.NEW_BRANCH }} into develop" # Title of pull request
+          pr_title: "[Automation] ${{ env.NEW_BRANCH }} into develop" # Title of pull request
           pr_body: 'Pr created by automation because of a conflict'
           pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
-          pr_label: "auto-pr"                               # Comma-separated list (no spaces)
-          pr_draft: true                                    # Creates pull request as draft
+          pr_label: "auto-pr,merge-failed"                               # Comma-separated list (no spaces)
+          pr_draft: false                                    # Creates pull request as draft
