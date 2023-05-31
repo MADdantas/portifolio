@@ -1,19 +1,18 @@
-name: Merge any release or staging branch to develop
+name: Create PR from merge/* to dev
 permissions:
   contents: write
   pull-requests: write
 on:
   pull_request_target:
     types:
+      - labeled
       - closed
     branches:
       - 'merge/**'
 env:
   GITHUB_TOKEN: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
-  MERGE_LABELS: "automerge"
-  MERGE_REMOVE_LABELS: "merge-failed"
 jobs:
-  merge-branch:
+  create-pr-to-develop:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
@@ -28,8 +27,4 @@ jobs:
           pr_body: 'Pr created by automation to run tests'
           pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
           pr_label: "merge-failed,automerge"             # Comma-separated list (no spaces)
-          pr_draft: false                                # Creates pull request as draft 
-
-      - id: automerge
-        name: automerge
-        uses: "pascalgn/automerge-action@v0.15.6"
+          pr_draft: false                                # Creates pull request as draft
