@@ -12,8 +12,8 @@ on:
 env:
   GITHUB_TOKEN: "${{ secrets.AUTOMATION_ACCESS_TOKEN }}"
   MERGE_LABELS: "automerge"
-  UPDATE_LABELS: "auto-pr,merge-failed"
-  MERGE_REQUIRED_APPROVALS: "0"
+  MERGE_REMOVE_LABELS: "merge-failed"
+  MERGE_REQUIRED_APPROVALS: "1"
 jobs:
   automerge:
     runs-on: ubuntu-latest
