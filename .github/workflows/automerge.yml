@@ -1,8 +1,9 @@
 name: automerge
 on:
-  label:
+  pull_request:
     types:
-      - automerge
+      - labeled
+      - opened
   check_suite:
     types:
       - completed
