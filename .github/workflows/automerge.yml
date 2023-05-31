@@ -1,8 +1,8 @@
 name: automerge
 on:
-  pull_request:
+  label:
     types:
-      - opened
+      - automerge
   check_suite:
     types:
       - completed
