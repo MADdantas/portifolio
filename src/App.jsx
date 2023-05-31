@@ -4,6 +4,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(1)
+  let a = 0;
 
   return (
     <div className="App">
