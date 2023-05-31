@@ -1,10 +1,5 @@
-name: Merge any release branch to uat
+name: Merge any release or staging branch to develop
 permissions:
-  # [Learn more about automatic token authentication permissions]
-  # (https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token)
-  # Permissions required for merging branches
-  # Need `contents: read` to checkout the repository
-  # Need `contents: write` to merge branches
   contents: write
   pull-requests: write
 on:
@@ -12,26 +7,27 @@ on:
     branches:
       - staging
       - 'release/*'
+env:
+  NEW_BRANCH: ${{ 'merge/' }}${{ github.ref_name }}
+  GITHUB_TOKEN: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
     steps:
+      - name: Creating new branch
+        uses: peterjgrainger/action-create-branch@v2.2.0
+        with:
+          branch: 'refs/heads/${{ env.NEW_BRANCH }}'
+
       - uses: actions/checkout@master
 
-      - name: Merge staging or release/* -> main
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          target_branch: main
-          github_token: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
-      
       - name: Create Pull Request
-        if: ${{ failure() }} 
         uses: repo-sync/pull-request@master
         with:
-          destination_branch: "main"
-          pr_title: "[Conflict] Try to merge ${{ github.ref_name }} into develop" # Title of pull request
+          destination_branch: 'main'
+          source_branch: '${{ env.NEW_BRANCH }}'
+          pr_title: "[Automation] ${{ env.NEW_BRANCH }} into develop" # Title of pull request
           pr_body: 'Pr created by automation because of a conflict'
           pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
-          pr_label: "auto-pr"                               # Comma-separated list (no spaces)
-          pr_draft: true                                    # Creates pull request as draft
+          pr_label: "auto-pr,merge-failed"                               # Comma-separated list (no spaces)
+          pr_draft: false                                    # Creates pull request as draft
