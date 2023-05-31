@@ -3,15 +3,18 @@ permissions:
   contents: write
   pull-requests: write
 on:
-  push:
+  pull_request_target:
+    types:
+      - closed
     branches:
-      - merge/**
+      - 'merge/**'
 env:
   GITHUB_TOKEN: ${{ secrets.AUTOMATION_ACCESS_TOKEN }}
   MERGE_LABELS: "automerge"
   MERGE_REMOVE_LABELS: "merge-failed"
 jobs:
   merge-branch:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
