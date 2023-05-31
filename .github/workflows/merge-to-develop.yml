@@ -21,4 +21,4 @@ jobs:
         pr_body: 'Pr created by automation to run tests'
         pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
         pr_label: "merge-failed,automerge"             # Comma-separated list (no spaces)
-        pr_draft: false                                # Creates pull request as draft
+        pr_draft: false                                # Creates pull request as draft 
