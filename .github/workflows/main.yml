@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@master
       - run: |
           git status
-          git merge origin/main
+          git fetch origin main
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
