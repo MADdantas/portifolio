@@ -33,6 +33,7 @@ jobs:
           pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
           pr_label: "merge-failed,automerge"             # Comma-separated list (no spaces)
           pr_draft: false                                    # Creates pull request as draft
+          
       - id: automerge
         name: automerge
         uses: "pascalgn/automerge-action@v0.15.6"
