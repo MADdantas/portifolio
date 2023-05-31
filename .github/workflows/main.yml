@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/checkout@master
       - run: |
-          git merge main
+          git merge origin/main
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
