@@ -1,8 +1,10 @@
 name: automerge
 on:
-  check_suite:
-    types:
-      - completed
+  # label:
+  #   types: [automerge]
+  # check_suite:
+  #   types:
+  #     - completed
   status: {success}
 env:
   GITHUB_TOKEN: "${{ secrets.AUTOMATION_ACCESS_TOKEN }}"
