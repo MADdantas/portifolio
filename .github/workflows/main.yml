@@ -21,7 +21,9 @@ jobs:
 
       - uses: actions/checkout@master
       - run: |
-          git fetch origin main
+        git checkout ${{ env.NEW_BRANCH }}
+        git fetch origin ${{ github.ref_name }}
+        git fetch origin main
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
