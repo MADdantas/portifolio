@@ -21,7 +21,6 @@ jobs:
 
       - uses: actions/checkout@master
       - run: |
-          git checkout origin ${{ env.NEW_BRANCH }}
           git fetch origin ${{ github.ref_name }}
           git fetch origin main
           
