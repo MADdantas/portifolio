@@ -26,7 +26,7 @@ jobs:
           git checkout ${{ env.NEW_BRANCH }}
           echo "Current branch is:"
           git branch --show-current
-          git merge origin/${{ github.ref_name }}
+          git rebase origin/${{ github.ref_name }}
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
