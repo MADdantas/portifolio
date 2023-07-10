@@ -24,8 +24,6 @@ jobs:
           git fetch origin main
           git fetch origin ${{ env.NEW_BRANCH }}
           git checkout ${{ env.NEW_BRANCH }}
-          echo "Current branch is:"
-          git branch --show-current
           git rebase origin/${{ github.ref_name }}
           
       - name: Create Pull Request
