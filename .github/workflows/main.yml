@@ -24,6 +24,7 @@ jobs:
           git config user.email github-actions@github.com
           git fetch origin ${{ github.ref_name }}
           git fetch origin main
+          git checkout ${{ env.NEW_BRANCH }}
           git merge ${{ github.ref_name }}
           git commit -m "Automation get latest commits"
           git push -u origin ${{ env.NEW_BRANCH }}
