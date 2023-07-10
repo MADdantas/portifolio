@@ -22,7 +22,6 @@ jobs:
       - run: |
           git fetch --all
           git rebase origin/${{ github.ref_name }} origin/${{ env.NEW_BRANCH }}
-          git push
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
