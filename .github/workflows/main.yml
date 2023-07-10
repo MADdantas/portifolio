@@ -23,6 +23,7 @@ jobs:
           git fetch origin ${{ github.ref_name }}
           git fetch origin main
           git merge ${{ github.ref_name }}
+          git push -u origin ${{ env.NEW_BRANCH }}
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
