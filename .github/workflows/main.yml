@@ -20,19 +20,16 @@ jobs:
 
       - uses: actions/checkout@master
       - run: |
-          git fetch origin ${{ github.ref_name }}
-          git fetch origin main
-          git fetch origin ${{ env.NEW_BRANCH }}
+          git fetch --all
           git checkout ${{ env.NEW_BRANCH }}
-          echo "Current branch is:"
-          git branch --show-current
-          git rebase origin/${{ github.ref_name }}
+          git rebase ${{ github.ref_name }}
+          git push
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
         with:
           destination_branch: 'main'
           source_branch: '${{ env.NEW_BRANCH }}'
-          pr_title: "[Automation] ${{ github.ref_name }} into develop" # Title of pull request
+          pr_title: "[Automation] ${{ github.ref_name }} into develop"
           pr_body: 'Pr created by automation to run tests'
           pr_assignee: ${{github.actor}}
