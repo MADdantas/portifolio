@@ -19,6 +19,8 @@ jobs:
           branch: 'refs/heads/${{ env.NEW_BRANCH }}'
 
       - uses: actions/checkout@master
+        with:
+          ref: ${{ env.NEW_BRANCH }}
       - run: |
           git fetch origin ${{ github.ref_name }}
           git fetch origin main
