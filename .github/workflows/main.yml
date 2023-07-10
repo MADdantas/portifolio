@@ -23,6 +23,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git pull
+          echo "Mergin ${{ github.ref_name }} into ${{ env.NEW_BRANCH }}"
           git checkout ${{ env.NEW_BRANCH }}
           git merge ${{ github.ref_name }}
           git commit -m "Automation get latest commits"
