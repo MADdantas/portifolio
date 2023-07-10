@@ -31,5 +31,4 @@ jobs:
           source_branch: '${{ env.NEW_BRANCH }}'
           pr_title: "[Automation] ${{ github.ref_name }} into develop" # Title of pull request
           pr_body: 'Pr created by automation to run tests'
-          pr_assignee: ${{github.actor}}                         # Comma-separated list (no spaces)
-          pr_label: "merge-failed,automerge"             # Comma-separated list (no spaces)
+          pr_assignee: ${{github.actor}}
