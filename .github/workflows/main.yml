@@ -21,8 +21,7 @@ jobs:
       - uses: actions/checkout@master
       - run: |
           git fetch --all
-          git checkout ${{ env.NEW_BRANCH }}
-          git rebase ${{ github.ref_name }}
+          git rebase origin/${{ github.ref_name }} origin/${{ env.NEW_BRANCH }}
           git push
           
       - name: Create Pull Request
