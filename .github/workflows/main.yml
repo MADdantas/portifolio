@@ -23,7 +23,8 @@ jobs:
           git fetch origin ${{ github.ref_name }}
           git fetch origin main
           git rebase ${{ github.ref_name }}
-          git push -u origin refs/heads/${{ env.NEW_BRANCH }}
+          git commit -m "Automation get latest commits"
+          git push -u origin ${{ env.NEW_BRANCH }}
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
