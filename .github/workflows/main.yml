@@ -24,6 +24,7 @@ jobs:
       - run: |
           git fetch origin ${{ github.ref_name }}
           git fetch origin main
+          git rebase ${{ github.ref_name }}
           git push -u origin ${{ env.NEW_BRANCH }}
           
       - name: Create Pull Request
