@@ -13,18 +13,15 @@ jobs:
   create-pr-to-merge:
     runs-on: ubuntu-latest
     steps:
-      - name: Creating new branch
-        uses: peterjgrainger/action-create-branch@v2.2.0
-        with:
-          branch: 'refs/heads/${{ env.NEW_BRANCH }}'
-
       - uses: actions/checkout@master
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git pull
-          echo "Mergin ${{ github.ref_name }} into ${{ env.NEW_BRANCH }}"
+          echo "Creating new branch"
+          git checkout -b ${{ env.NEW_BRANCH }}
           git checkout ${{ env.NEW_BRANCH }}
+          echo "Mergin ${{ github.ref_name }} into ${{ env.NEW_BRANCH }}"
           git merge ${{ github.ref_name }}
           git commit -m "Automation get latest commits"
           git push -u origin ${{ env.NEW_BRANCH }}
