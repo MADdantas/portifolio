@@ -20,9 +20,10 @@ jobs:
 
       - uses: actions/checkout@master
       - run: |
-          git fetch --all
-          git rebase origin/${{ github.ref_name }} origin/${{ env.NEW_BRANCH }}
-          git push
+          git fetch --all 
+          git pull --allow-unrelated-histories
+          git checkout ${{ env.NEW_BRANCH }}
+          git rebase ${{ github.ref_name }}
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
