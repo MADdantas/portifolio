@@ -33,7 +33,7 @@ jobs:
 
           # Branch, or Git ref, that the head_branch will be rebased onto.
 
-          base_ref: refs/heads/${{ github.ref_name }}
+          base_ref: origin/${{ github.ref_name }}
 
           
       - name: Create Pull Request
