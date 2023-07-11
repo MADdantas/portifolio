@@ -22,6 +22,7 @@ jobs:
       - run: |
           git fetch origin ${{ github.ref_name }}
           git fetch origin ${{ env.NEW_BRANCH }}
+          git pull
           git checkout ${{ env.NEW_BRANCH }}
           git pull
           git rebase ${{ github.ref_name }}
