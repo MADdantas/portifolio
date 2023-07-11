@@ -29,7 +29,7 @@ jobs:
 
           # Head branch, which will be rebased onto the base_ref.
 
-          head_branch: ${{ env.NEW_BRANCH }}
+          head_branch: origin/${{ env.NEW_BRANCH }}
 
           # Branch, or Git ref, that the head_branch will be rebased onto.
 
