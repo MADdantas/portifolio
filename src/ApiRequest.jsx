@@ -3,7 +3,7 @@ import { useState } from "react"
 import './ApiRequest.css'
 import humidity from './assets/humidity.jpg'
 import wind from './assets/wind-speed.png'
-
+// get data
 const requestWeather = async (location) => {
     try{
         const data = await axios.get(`https://api.weatherapi.com/v1/current.json?key=77252c96c8d24a31980161429232603&q=${location}&aqi=no`);
