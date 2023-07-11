@@ -22,6 +22,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
       - run: |
+          git pull
           git fetch origin ${{ env.NEW_BRANCH }}
           git checkout ${{ env.NEW_BRANCH }}
           git pull
