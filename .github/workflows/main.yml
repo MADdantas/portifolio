@@ -23,7 +23,7 @@ jobs:
           git pull
           git checkout ${{ env.NEW_BRANCH }}
           git rebase --onto origin/${{ github.ref_name }}
-          git pull
+          git pull.rebase true
           git push
           
       - name: Create Pull Request
