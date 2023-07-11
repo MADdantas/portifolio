@@ -23,7 +23,7 @@ jobs:
 
         # Recommended: specify a version such as `@v1.0` rather than `@main`
 
-        uses: DeeDeeG/rebase-github-action@v1.0
+        uses: DeeDeeG/rebase-github-action@main
 
         with:
 
