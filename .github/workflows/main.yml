@@ -19,13 +19,22 @@ jobs:
           branch: 'refs/heads/${{ env.NEW_BRANCH }}'
 
       - uses: actions/checkout@master
-      - run: |
-          git pull
-          git checkout ${{ env.NEW_BRANCH }}
-          git rebase --onto origin/${{ github.ref_name }}
-          git config pull.rebase true
-          git pull
-          git push
+      - name: Rebase head_branch on base_ref
+
+        # Recommended: specify a version such as `@v1.0` rather than `@main`
+
+        uses: DeeDeeG/rebase-github-action@v1.0
+
+        with:
+
+          # Head branch, which will be rebased onto the base_ref.
+
+          head_branch: ${{ env.NEW_BRANCH }}
+
+          # Branch, or Git ref, that the head_branch will be rebased onto.
+
+          base_ref: ${{ github.ref_name }}
+
           
       - name: Create Pull Request
         uses: repo-sync/pull-request@master
