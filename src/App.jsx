@@ -4,7 +4,7 @@ import './App.css'
 
 function App() {
 
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(2)
   let a = 0;
 
   return (
