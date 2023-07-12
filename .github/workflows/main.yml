@@ -24,7 +24,7 @@ jobs:
           git config --global user.name "MADdantas"
           git fetch origin
           git checkout ${{ env.NEW_BRANCH }}
-          git merge -X ours origin/${{ github.ref_name }}
+          git merge -X ours --allow-unrelated-histories origin/${{ github.ref_name }}
           git push origin ${{ env.NEW_BRANCH }} --force-with-lease
           
       - name: Create Pull Request
